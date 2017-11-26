@@ -8,6 +8,7 @@ Dependencies
 Resources
 - [Template Classes](http://en.cppreference.com/w/cpp/language/class_template)
 - [A Primer on GoogleTest](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)
+- [BiDirectionalIterator](http://www.cplusplus.com/reference/iterator/BidirectionalIterator/)
 
 Data Structures
 - [Unrolled Linked List](https://en.wikipedia.org/wiki/Unrolled_linked_list)

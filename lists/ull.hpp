@@ -99,6 +99,18 @@ public:
     return tmp->get(index);
   }
 
+  void pop_front() {
+    throw new std::logic_error("Not yet implemented.");
+  }
+
+  void push_front(const T item) {
+    throw new std::logic_error("Not yet implemented.");
+  }
+
+  void pop_back() {
+    throw new std::logic_error("Not yet implemented.");
+  }
+
   /**
    * Adds an item to the end of the list
    */
@@ -141,6 +153,17 @@ public:
 
   bool empty() const {
     return this->_head == nullptr || this->_head->size() == 0;
+  }
+
+  void clear() noexcept {
+    UllNode<T>* tmp = this->_head;
+    while (tmp->next() != nullptr) {
+      UllNode<T>* tmp2 = tmp->next();
+      delete tmp;
+      tmp = tmp2;
+    }
+
+    delete tmp;
   }
 
   std::size_t size() const { return this->_len; }
