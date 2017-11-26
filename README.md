@@ -1,6 +1,9 @@
 Eidos
 ======
 
+Dependencies
+- C++14
+- googletest
 
 Resources
 - [Template Classes](http://en.cppreference.com/w/cpp/language/class_template)
