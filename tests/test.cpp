@@ -59,6 +59,26 @@ TEST(UnrolledLinkedList, AppendingWithSmallNodes) {
   EXPECT_EQ(ull.numberOfLinks(), 3);
 }
 
+TEST(UnrolledLinkedList, GetFront) {
+  UnrolledLinkedList<int> ull{};
+
+  ull.push_back(1);
+  ull.push_back(2);
+  ull.push_back(3);
+
+  EXPECT_EQ(ull.front(), 1);
+}
+
+TEST(UnrolledLinkedList, GetBack) {
+  UnrolledLinkedList<int> ull{};
+
+  ull.push_back(1);
+  ull.push_back(2);
+  ull.push_back(3);
+
+  EXPECT_EQ(ull.back(), 3);
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

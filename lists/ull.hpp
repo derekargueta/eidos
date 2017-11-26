@@ -54,6 +54,10 @@ public:
     return this->numElements;
   }
 
+  T getLast() {
+    return this->arr[this->numElements-1];
+  }
+
 private:
   UllNode<T>* _next;
   int numElements;
@@ -121,6 +125,16 @@ public:
         this->_len += 1;
       }
     }
+  }
+
+  T front() {
+    //  TODO throw outofbounds exception
+    return this->_head->get(0);
+  }
+
+  T back() {
+    //  TODO throw outofbounds exception
+    return this->getLastNode()->getLast();
   }
 
   int size() { return this->_len; }
