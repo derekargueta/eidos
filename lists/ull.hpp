@@ -102,7 +102,7 @@ public:
   /**
    * Adds an item to the end of the list
    */
-  void push_back(T item) {
+  void push_back(const T item) {
     if (this->_head == nullptr) {
       this->_head = new UllNode<T>(this->_maxNumElementsPerNode);
       this->_head->push_back(item);
@@ -127,17 +127,23 @@ public:
     }
   }
 
+  // TODO should actually return reference type.... we'll do that later....
   T front() {
     //  TODO throw outofbounds exception
     return this->_head->get(0);
   }
 
+  // TODO should actually return reference type.... we'll do that later....
   T back() {
     //  TODO throw outofbounds exception
     return this->getLastNode()->getLast();
   }
 
-  int size() { return this->_len; }
+  bool empty() const {
+    return this->_head == nullptr || this->_head->size() == 0;
+  }
+
+  std::size_t size() const { return this->_len; }
 
   int numberOfLinks() {
     int counter = 1;
