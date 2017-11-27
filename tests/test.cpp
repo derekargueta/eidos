@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 
 #include "../lists/ull.hpp"
+#include "../lists/ll.hpp"
 
 
 TEST(UnrolledLinkedList, BasicCreation) {
@@ -89,6 +90,87 @@ TEST(UnrolledLinkedList, GetBack) {
   ull.push_back(3);
 
   EXPECT_EQ(ull.back(), 3);
+}
+
+/////////////////////// List tests
+
+TEST(LinkedList, BasicCreation) {
+  LinkedList<int> ll{};
+  EXPECT_EQ(ll.size(), 0);
+  EXPECT_TRUE(ll.empty());
+}
+
+TEST(LinkedList, GetFront) {
+  LinkedList<int> ll{};
+
+  ll.push_back(1);
+  ll.push_back(2);
+  ll.push_back(3);
+
+  EXPECT_EQ(ll.front(), 1);
+}
+
+TEST(LinkedList, PopFront) {
+  LinkedList<int> ll{};
+
+  ll.push_back(1);
+  ll.push_back(2);
+  ll.push_back(3);
+
+  ll.pop_front();
+
+  EXPECT_EQ(ll.front(), 2);
+  EXPECT_EQ(ll.back(), 3);
+}
+
+TEST(LinkedList, PushFront) {
+  LinkedList<int> ll{};
+
+  ll.push_back(1);
+  ll.push_back(2);
+  ll.push_front(3);
+
+  EXPECT_EQ(ll.front(), 3);
+  EXPECT_EQ(ll.back(), 2);
+}
+
+TEST(LinkedList, PopBack) {
+  LinkedList<int> ll{};
+
+  ll.push_back(1);
+
+  EXPECT_EQ(ll.size(), 1);
+  EXPECT_EQ(ll.front(), 1);
+  EXPECT_EQ(ll.back(), 1);
+  EXPECT_EQ(ll.countNodes(), 1);
+
+  ll.pop_back();
+
+  EXPECT_EQ(ll.size(), 0);
+  EXPECT_EQ(ll.countNodes(), 0);
+
+  ll.push_back(1);
+  ll.push_back(2);
+  ll.push_back(3);
+
+  EXPECT_EQ(ll.size(), 3);
+  EXPECT_EQ(ll.front(), 1);
+  EXPECT_EQ(ll.back(), 3);
+  EXPECT_EQ(ll.countNodes(), 3);
+
+  ll.pop_back();
+
+  EXPECT_EQ(ll.size(), 2);
+  EXPECT_EQ(ll.countNodes(), 2);
+  EXPECT_EQ(ll.front(), 1);
+  EXPECT_EQ(ll.back(), 2);
+
+  ll.pop_back();
+
+  EXPECT_EQ(ll.size(), 1);
+  EXPECT_EQ(ll.countNodes(), 1);
+  EXPECT_EQ(ll.front(), 1);
+  EXPECT_EQ(ll.back(), 1);
 }
 
 int main(int argc, char **argv) {
