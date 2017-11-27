@@ -173,6 +173,22 @@ TEST(LinkedList, PopBack) {
   EXPECT_EQ(ll.back(), 1);
 }
 
+TEST(LinkedList, ToArray) {
+  LinkedList<int> ll{};
+
+  ll.push_back(1);
+  ll.push_back(2);
+  ll.push_back(3);
+  ll.push_back(4);
+  ll.push_back(5);
+
+  int* arr = ll.toArray();
+
+  for (int i = 0; i < 5; i++) {
+    EXPECT_EQ(arr[i], i + 1);
+  }
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

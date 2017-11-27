@@ -97,9 +97,8 @@ public:
       tmp = tmp->next();
     }
 
-    // std::cout << tmp->value() << std::endl;
     delete tmp->next();
-    tmp->setNext(nullptr);
+    tmp->setNext(nullptr);    // is this necessary?
     this->_size -= 1;
   }
 

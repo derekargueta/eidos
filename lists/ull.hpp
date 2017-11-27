@@ -141,13 +141,17 @@ public:
 
   // TODO should actually return reference type.... we'll do that later....
   T front() {
-    //  TODO throw outofbounds exception
+    if (this->_len == 0) {
+      throw new std::out_of_range("Empty list");
+    }
     return this->_head->get(0);
   }
 
   // TODO should actually return reference type.... we'll do that later....
   T back() {
-    //  TODO throw outofbounds exception
+    if (this->_len == 0) {
+      throw new std::out_of_range("Empty list");
+    }
     return this->getLastNode()->getLast();
   }
 
