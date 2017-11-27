@@ -5,7 +5,8 @@ Mostly for my own entertainment, partially for potentially being helpful to othe
 
 Dependencies
 - C++14
-- googletest
+- googletest (`make test`)
+- cppcheck (`make lint`)
 
 Data Structures
 - [ ] Linked List
@@ -23,7 +24,3 @@ Resources
 - [A Primer on GoogleTest](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md)
 - [BiDirectionalIterator](http://www.cplusplus.com/reference/iterator/BidirectionalIterator/)
 
-Data Structures
-- [Unrolled Linked List](https://en.wikipedia.org/wiki/Unrolled_linked_list)
-- [B-Tree](https://en.wikipedia.org/wiki/B-tree)
-- [Red-Black Tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)

@@ -187,6 +187,8 @@ TEST(LinkedList, ToArray) {
   for (int i = 0; i < 5; i++) {
     EXPECT_EQ(arr[i], i + 1);
   }
+
+  delete[] arr;
 }
 
 int main(int argc, char **argv) {
