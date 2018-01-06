@@ -62,6 +62,26 @@ public:
     return this->arr[this->numElements-1];
   }
 
+  /*
+   * Removes the first element in the list container, effectively reducing the
+   * container size by one.
+   */
+  void pop_front() {
+    for (int i = 0; i < this->numElements - 1; i++) {
+      this->arr[i] = this->arr[i+1];
+    }
+    this->numElements -= 1;
+  }
+
+  /*
+   * Removes the last element in the list container, effectively reducing the
+   * container size by one.
+   */
+  void pop_back() {
+    // don't need to modify the array - it's just "garbage memory" now
+    this->numElements -= 1;
+  }
+
 private:
   UllNode<T>* _next;
   int numElements;
@@ -104,7 +124,9 @@ public:
   }
 
   void pop_front() {
-    throw new std::logic_error("Not yet implemented.");
+    this->_head->pop_front();
+
+    // TODO: check if need to rebalance the node
   }
 
   void push_front(const T item) {
@@ -112,7 +134,9 @@ public:
   }
 
   void pop_back() {
-    throw new std::logic_error("Not yet implemented.");
+    this->getLastNode()->pop_back();
+
+    // TODO: check if need to rebalance the node 
   }
 
   /**
@@ -176,7 +200,7 @@ public:
 
   std::size_t size() const { return this->_len; }
 
-  int numberOfLinks() {
+  int numberOfLinks() const {
     int counter = 1;
     UllNode<T>* tmp = this->_head;
     while (tmp->next() != nullptr) {
@@ -223,7 +247,7 @@ private:
 
   // number of items each node may have
   int _maxNumElementsPerNode;
-  
+
   UllNode<T>* _head;
 
   UllNode<T>* getLastNode() {
