@@ -126,6 +126,18 @@ TEST(UnrolledLinkedList, CheckBasicBackPop) {
   EXPECT_EQ(ull.str(), "{[1, 2]}");
 }
 
+TEST(UnrolledLinkedList, pushfront) {
+  UnrolledLinkedList<int> ull{};
+
+  ull.push_back(1);
+  ull.push_back(2);
+  ull.push_back(3);
+
+  ull.push_front(5);
+
+  EXPECT_EQ(ull.str(), "{[5, 1, 2, 3]}");
+}
+
 /////////////////////// List tests
 
 TEST(LinkedList, BasicCreation) {

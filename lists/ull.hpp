@@ -36,12 +36,6 @@ public:
     this->numElements /= 2;
   }
 
-  // TODO this actually requires moving things in the array
-  void clearLowerRange() {
-    this->numElements /= 2;
-    
-  }
-
   void setNext(UllNode<T>* newNext) {
     this->_next = newNext;
   }
@@ -82,6 +76,20 @@ public:
     this->numElements -= 1;
   }
 
+  void push_front(const T val) {
+    if (this->isFull()) {
+      // yikes. TODO wat do
+      return;
+    }
+
+    for (int i = this->numElements; i >= 0; i--) {
+      this->arr[i+1] = this->arr[i];
+    }
+
+    this->arr[0] = val;
+    this->numElements += 1;
+  }
+
 private:
   UllNode<T>* _next;
   int numElements;
@@ -109,8 +117,8 @@ public:
   }
 
   ~UnrolledLinkedList() {
-    // TODO: delete all connected nodes, not just head
     delete _head;
+    // this->clear(); causes a segfault
   }
 
   T get(int index) {
@@ -130,7 +138,11 @@ public:
   }
 
   void push_front(const T item) {
-    throw new std::logic_error("Not yet implemented.");
+    // invariant: node's should never be completely full, so we should
+    // have room to insert
+    this->_head->push_front(item);
+
+    // TODO: check if need to rebalance the node
   }
 
   void pop_back() {
