@@ -92,6 +92,16 @@ TEST(UnrolledLinkedList, GetBack) {
   EXPECT_EQ(ull.back(), 3);
 }
 
+TEST(UnrolledLinkedList, StringRepresentation) {
+  UnrolledLinkedList<int> ull{};
+
+  ull.push_back(1);
+  ull.push_back(2);
+  ull.push_back(3);
+
+  EXPECT_EQ(ull.str(), "{[1, 2, 3]}");
+}
+
 /////////////////////// List tests
 
 TEST(LinkedList, BasicCreation) {

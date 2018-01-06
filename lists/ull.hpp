@@ -1,5 +1,8 @@
 
 #pragma once
+
+#include <sstream>
+
 #include "list.hpp"
 
 template <typename T>
@@ -36,6 +39,7 @@ public:
   // TODO this actually requires moving things in the array
   void clearLowerRange() {
     this->numElements /= 2;
+    
   }
 
   void setNext(UllNode<T>* newNext) {
@@ -182,9 +186,44 @@ public:
 
     return counter;
   }
+
+  /**
+   * Produces a string-representation which is useful for debugging and
+   * development to get a holistic view of the data structure
+   */
+  std::string str() const {
+    std::stringstream ss;
+    ss << "{";
+
+    UllNode<T>* tmp = this->_head;
+    while (tmp != nullptr) {
+      if (tmp != this->_head) {
+        ss << ", ";
+      }
+      ss << "[";
+      for (int i = 0; i < tmp->size(); i++) {
+        if (i != 0) {
+          ss << ", ";
+        }
+        ss << tmp->get(i);
+      }
+      ss << "]";
+
+      tmp = tmp->next();
+    }
+
+    ss << "}";
+
+    return ss.str();
+  }
+
 private:
+  // The number of nodes in the data structure
   int _len;
+
+  // number of items each node may have
   int _maxNumElementsPerNode;
+  
   UllNode<T>* _head;
 
   UllNode<T>* getLastNode() {
